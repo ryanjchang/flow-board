@@ -22,6 +22,7 @@ import { useBoards } from "@/lib/hooks/useBoards";
 import { Board } from "@/lib/supabase/models";
 import { useUser } from "@clerk/nextjs";
 import {
+  Check,
   Filter,
   Grid3x3Icon,
   ListIcon,
@@ -209,7 +210,7 @@ export default function DashboardPage() {
                   </p>
                 </div>
                 <div className="h-10 w-10 sm:h-12 sm:w-12 bg-green-100 rounded-lg flex items-center justify-center">
-                  <Rocket className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
+                  <Check className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                 </div>
               </div>
             </CardContent>
