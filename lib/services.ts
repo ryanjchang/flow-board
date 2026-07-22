@@ -95,7 +95,7 @@ export const columnService = {
   ): Promise<Board> {
     const { data, error } = await supabase
       .from("columns")
-      .update({ title})
+      .update({ title })
       .eq("id", columnId)
       .select()
       .single();
@@ -103,6 +103,15 @@ export const columnService = {
     if (error) throw error;
 
     return data;
+  },
+
+  async deleteColumn(supabase: SupabaseClient, columnId: string) {
+    const { error } = await supabase
+      .from("columns")
+      .delete()
+      .eq("id", columnId);
+
+    if (error) throw error;
   },
 };
 
@@ -142,6 +151,15 @@ export const taskService = {
     return data || [];
   },
 
+  async deleteTask(supabase: SupabaseClient, taskId: string){
+    const {error} = await supabase
+    .from("tasks")
+    .delete()
+    .eq("id", taskId)
+
+    if(error) throw error;
+  },
+
   async moveTask(
     supabase: SupabaseClient,
     taskId: string,
@@ -155,8 +173,8 @@ export const taskService = {
         sort_order: newOrder,
       })
       .eq("id", taskId);
-      if(error) throw error;
-      return data;
+    if (error) throw error;
+    return data;
   },
 };
 
